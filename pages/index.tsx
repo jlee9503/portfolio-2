@@ -1,3 +1,4 @@
+import About from '@/components/About';
 import Banner from '@/components/Banner'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head'
@@ -13,8 +14,13 @@ export default function Home() {
       </Head>
 
       <Navbar />
-      <section id='banner' className='snap-center'>
+      
+      <section id='banner' className='snap-start'>
         <Banner />
+      </section>
+
+      <section id='about' className='snap-center'>
+        <About />
       </section>
     </div>
   );

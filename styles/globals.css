@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@layer components {
+  .navMenu {
+    @apply px-6 py-2 border border-[#242424] uppercase text-xs rounded-full tracking-widest text-gray-500 transition-all hover:text-slate-300/70 hover:border-slate-300/70
+  }
+}
+
+.social-icon:hover .social-svg-icon {
+  fill: #fff !important;
 }

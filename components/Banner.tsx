@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircle from "./BackgroundCircle";
@@ -15,15 +17,38 @@ export default function Banner({}: Props) {
     delaySpeed: 2000,
   });
   return (
-    <div className="h-screen flex flex-col justify-center items-center space-y-8 text-center overflow-hidden">
+    <div className="h-screen flex flex-col justify-center items-center text-center overflow-hidden">
       <BackgroundCircle />
-      {/* <Image /> */}
-      <div>
-        <h2 className="text-sm uppercase text-gray-400 pb-2 tracking-[20px]">Web Developer</h2>
-        <h1>
+      <Image
+        src="/profile-pic.jpeg"
+        alt="profile-pic"
+        width={128}
+        height={128}
+        className="relative mx-auto rounded-full object-cover w-32 h-32 md:w-40 md:h-40 lg:w-52 lg:h-52"
+      />
+      <div className="z-20">
+        <h2 className="text-xs sm:text-sm uppercase text-gray-400 pb-2 tracking-[15px]">
+          Web Developer
+        </h2>
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold px-10">
           <span>{text}</span>
           <Cursor cursorColor="rgb(34,211,238)" />
         </h1>
+
+        <div className="pt-5">
+          <Link href="#about">
+            <button className="navMenu">About</button>
+          </Link>
+          <Link href="#experience">
+            <button className="navMenu">Experience</button>
+          </Link>
+          <Link href="#skills">
+            <button className="navMenu">Skills</button>
+          </Link>
+          <Link href="#projects">
+            <button className="navMenu">Projects</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
