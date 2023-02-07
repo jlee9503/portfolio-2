@@ -49,11 +49,10 @@ export default function Navbar({}: Props) {
         initial={{ x: 500, opacity: 0, scale: 0 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="flex items-center"
+        className="flex items-center cursor-pointer"
       >
         <SocialIcon
           network="email"
-          className="cursor-pointer"
           fgColor="gray"
           bgColor="transparent"
           style={{ height: 40, width: 40 }}

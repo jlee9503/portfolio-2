@@ -1,7 +1,9 @@
-import About from '@/components/About';
-import Banner from '@/components/Banner'
-import Navbar from '@/components/Navbar'
-import Head from 'next/head'
+import About from "@/components/About";
+import Banner from "@/components/Banner";
+import Navbar from "@/components/Navbar";
+import Skills from "@/components/Skills";
+import WorkExperience from "@/components/WorkExperience";
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -14,13 +16,21 @@ export default function Home() {
       </Head>
 
       <Navbar />
-      
-      <section id='banner' className='snap-start'>
+
+      <section id="banner" className="snap-start">
         <Banner />
       </section>
 
-      <section id='about' className='snap-center'>
+      <section id="about" className="snap-center">
         <About />
+      </section>
+
+      <section id="experience" className="snap-center">
+        <WorkExperience />
+      </section>
+
+      <section id="skills" className="snap-start">
+        <Skills />
       </section>
     </div>
   );
