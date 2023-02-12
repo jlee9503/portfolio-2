@@ -5,7 +5,7 @@ type Props = { itemId: Number };
 
 const Works = (props: Props) => {
   return (
-    <article className="flex flex-col rounded-lg items-center flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center p-10 bg-[#292929] opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden">
+    <article className="flex flex-col rounded-lg items-center flex-shrink-0 w-[500px] md:w-[50%] lg:w-[50%] snap-center p-6 bg-[#292929] opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden">
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.2 }}
@@ -13,7 +13,7 @@ const Works = (props: Props) => {
         viewport={{ once: true }}
         src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2018_30/2505991/180723-open-ofice-space-dk-928.jpg"
         alt=""
-        className="w-32 h-32 lg:w-[200px] lg:h-[200px] rounded-full object-cover object-center"
+        className="w-32 h-32 lg:w-[150px] lg:h-[150px] rounded-full object-cover object-center"
       />
 
       <div id={"Work" + props.itemId} className="px-0 md:px-10 max-w-[12rem] sm:max-w-none">

@@ -12,7 +12,7 @@ function About({}: Props) {
       viewport={{ once: true }}
       className="h-screen flex flex-col relative text-center md:text-left md:flex-row max-w-7xl justify-evenly items-center mx-auto px-10"
     >
-      <h2 className="text-gray-500 text-xl md:text-2xl uppercase tracking-[18px] absolute top-20">
+      <h2 className="text-gray-500 text-xl md:text-2xl uppercase tracking-[18px] mr-[-18px] absolute top-20">
         About
       </h2>
 

@@ -17,3 +17,7 @@
 .social-icon:hover .social-svg-icon {
   fill: #fff !important;
 }
+
+.contactInput {
+  @apply outline-none bg-slate-400/10 rounded-sm border-b-2 px-6 py-4 border-[#242424] text-gray-500 transition-all focus:border-cyan-400/40 focus:text-cyan-400/80 hover:border-cyan-400/40
+}
