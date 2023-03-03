@@ -49,16 +49,17 @@ export default function Navbar({}: Props) {
         initial={{ x: 500, opacity: 0, scale: 0 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="flex items-center cursor-pointer"
+        className="flex items-center cursor-pointer group"
       >
         <SocialIcon
           network="email"
           fgColor="gray"
           bgColor="transparent"
           style={{ height: 40, width: 40 }}
+          className="group-hover:fill-white"
         />
 
-        <p className="uppercase text-gray-400 hidden md:inline-flex">
+        <p className="uppercase text-gray-400 hidden md:inline-flex group-hover:text-white">
           Get in touch
         </p>
       </motion.div>

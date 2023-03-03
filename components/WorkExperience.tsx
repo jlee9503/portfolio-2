@@ -17,7 +17,7 @@ const WorkExperience = (props: Props) => {
         Experience
       </h2>
 
-      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory absolute top-[15%] lg:static">
+      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory absolute top-[15%] lg:static scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-cyan-400/50">
         <Works itemId={1} />
         <Works itemId={2} />
         <Works itemId={3} />
