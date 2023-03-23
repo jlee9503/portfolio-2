@@ -5,9 +5,25 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import WorkExperience from "@/components/WorkExperience";
+import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import { fetchPageInfo } from "@/util/fetchPageInfo";
+import { fetchExperiences } from "@/util/fetchExperiences";
+import { fetchSkills } from "@/util/fetchSkills";
+import { fetchProjects } from "@/util/fetchProjects";
+import { fetchSocials } from "@/util/fetchSocials";
 
-export default function Home() {
+type Props = {
+  pageInfo: PageInfo;
+  experiences: Experience[];
+  projects: Project[];
+  skills: Skill[];
+  socials: Social[];
+};
+
+export default function Home(props: Props) {
+  console.log(props)
   return (
     <div className="bg-[rgb(36,36,36)] text-slate-200 h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-cyan-400/50">
       <Head>
@@ -17,26 +33,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <Navbar socials={props.socials} />
 
       <section id="banner" className="snap-start">
-        <Banner />
+        <Banner pageInfo={props.pageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About />
+        <About pageInfo={props.pageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
-        <WorkExperience />
+        <WorkExperience experiences={props.experiences} />
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills />
+        <Skills skills={props.skills} />
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={props.projects} />
       </section>
 
       <section id="contact" className="snap-start">
@@ -45,3 +61,22 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo: PageInfo = await fetchPageInfo();
+  const experiences: Experience[] = await fetchExperiences();
+  const skills: Skill[] = await fetchSkills();
+  const projects: Project[] = await fetchProjects();
+  const socials: Social[] = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo,
+      experiences,
+      skills,
+      projects,
+      socials,
+    },
+    revalidate: 1000,
+  };
+};

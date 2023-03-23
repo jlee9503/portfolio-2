@@ -1,10 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Works from "./Works";
+import { Experience } from "@/typings";
 
-type Props = {};
+type Props = {
+  experiences: Experience[];
+};
 
-const WorkExperience = (props: Props) => {
+const WorkExperience = ({ experiences }: Props) => {
+  console.log(experiences)
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,11 +22,10 @@ const WorkExperience = (props: Props) => {
       </h2>
 
       <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory absolute top-[15%] lg:static scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-cyan-400/50">
-        <Works itemId={1} />
-        <Works itemId={2} />
-        <Works itemId={3} />
-        <Works itemId={4} />
-      </div>
+        {experiences?.map((experience) => (
+          <Works key={experience._id} experience={experience} />
+        ))}
+      </div> 
     </motion.div>
   );
 };

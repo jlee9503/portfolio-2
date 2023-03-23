@@ -1,15 +1,19 @@
+import { urlFor } from "@/sanity";
+import { PageInfo } from "@/typings";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircle from "./BackgroundCircle";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-export default function Banner({}: Props) {
+export default function Banner({ pageInfo }: Props) {
   const [text, count] = useTypewriter({
     words: [
-      "Hi, The name is John",
+      `Hi, The name is ${pageInfo?.name}`,
       "Guy-who-loves-soccer.tsx",
       "<ButEnjoysCodingMore />",
     ],
@@ -20,7 +24,7 @@ export default function Banner({}: Props) {
     <div className="h-screen flex flex-col justify-center items-center text-center overflow-hidden">
       <BackgroundCircle />
       <Image
-        src="/profile-pic.jpeg"
+        src={urlFor(pageInfo?.heroImage).url()}
         alt="profile-pic"
         width={128}
         height={128}

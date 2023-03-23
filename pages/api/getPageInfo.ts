@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { groq } from "next-sanity";
-import { client } from "../../sanity";
+import { sanityClient} from "../../sanity";
 import { PageInfo } from "@/typings";
 
 // expand technologies array to get full values since it references to skill
@@ -14,6 +14,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const pageInfo: PageInfo = await client.fetch(query);
+  const pageInfo: PageInfo = await sanityClient.fetch(query);
   res.status(200).json({ pageInfo });
 }

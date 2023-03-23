@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { PageInfo } from "@/typings";
+import { urlFor } from "@/sanity";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo
+};
 
-function About({}: Props) {
+function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,7 +25,7 @@ function About({}: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        src="/profile-pic.jpeg"
+        src={urlFor(pageInfo.profilePic).url()}
         className="flex-shrink-0 w-[150px] h-[150px] rounded-full md:rounded-lg md:w-72 md:h-80 lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover -mb-20"
       />
 
@@ -30,14 +34,7 @@ function About({}: Props) {
           My Background
         </h4>
         <p className="text-xs lg:text-base">
-          lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. lorem Ipsum is simply dummy
-          text of the printing and typesetting industry. Lorem Ipsum has been
-          the industry standard dummy text ever since the 1500s, when an unknown
-          printer took a galley of type and scrambled it to make a type specimen
-          book.
+          {pageInfo.backgroundInfo}
         </p>
       </div>
     </motion.div>

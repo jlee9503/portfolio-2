@@ -1,17 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Project } from "@/typings";
+import { urlFor } from "@/sanity";
+import Image from "next/image";
 
-type Props = {};
+type Props = { projects: Project[] };
 
-const Projects = (props: Props) => {
-  const projects = [1, 2, 3];
+const Projects = ({ projects }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.2 }}
       viewport={{ once: true }}
-      className="h-screen flex flex-col relative text-left md:flex-row max-w-full justify-evenly overflow-hidden items-center mx-auto">
+      className="h-screen flex flex-col relative text-left md:flex-row max-w-full justify-evenly overflow-hidden items-center mx-auto"
+    >
       <h2 className="text-gray-500 text-xl md:text-2xl uppercase tracking-[18px] mr-[-18px] absolute top-20">
         Projects
       </h2>
@@ -27,7 +30,7 @@ const Projects = (props: Props) => {
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              src="https://zippypixels.com/wp-content/uploads/2015/09/01-Free-perspective-website-mockup-824x542.jpg"
+              src={urlFor(project?.projectImage).url()}
               className="w-[300px] h-[250px]"
             />
 
@@ -36,14 +39,17 @@ const Projects = (props: Props) => {
                 <span className="underline decoration-cyan-400/50">
                   Project {index + 1} of {projects.length}:
                 </span>{" "}
-                Project Title
+                {project?.title}
               </h4>
 
+              <div className="flex justify-center items-center space-x-2">
+                {project?.technologies.map((tech, idx) =>
+                  <Image key={idx} src={urlFor(tech.image).url()} alt="tech-img" width={40} height={40} />
+                )}
+              </div>
+
               <p className="text-lg text-center md:text-left">
-                lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book.
+                {project?.summary}
               </p>
             </div>
           </div>

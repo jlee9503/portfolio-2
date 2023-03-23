@@ -1,15 +1,18 @@
 import React from "react";
 import TechSkill from "./TechSkill";
 import { motion } from "framer-motion";
+import { Skill as SkillTypes } from "@/typings";
 
-type Props = {};
+type Props = {
+  skills: SkillTypes[];
+};
 
-const Skills = (props: Props) => {
+const Skills = ({ skills }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 1.5 }}
       viewport={{ once: true }}
       className="min-h-screen flex flex-col relative text-center md:text-left justify-center items-center mx-auto xl:space-y-0 xl:px-10 max-w-[2000px] xl:flex-row"
     >
@@ -22,14 +25,9 @@ const Skills = (props: Props) => {
       </h3>
 
       <div className="grid grid-cols-3 md:grid-cols-4 gap-5">
-        <TechSkill directionLeft={true} />
-        <TechSkill directionLeft={true} />
-        <TechSkill directionLeft={true} />
-        <TechSkill directionLeft={true} />
-        <TechSkill />
-        <TechSkill />
-        <TechSkill />
-        <TechSkill />
+        {skills.map((skill) =>
+          <TechSkill key={skill._id} skill={skill} directionLeft={true} />
+        )}
       </div>
     </motion.div>
   );
